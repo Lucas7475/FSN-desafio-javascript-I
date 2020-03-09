@@ -160,6 +160,11 @@ function aplicarNota(aluno, nota){
     }
 }  
 function aprovarAluno(aluno){
-    
+    if(aluno.cursos.length != []){
+        let media = aluno.notas.reduce((acul, soma) => acul+= soma);
+        let resu = media/aluno.notas.length >= 7 && aluno.faltas <= 3? "aprovado!":"reprovado!";
+        console.log(resu);        
+    }else{
+        console.log("Aluno não matriculado em nehum curso!");        
+    }
 }
-
