@@ -140,11 +140,26 @@ function matricularAluno(aluno, curso){
     }
 }
 function aplicarFalta(aluno){
-    
+    if(aluno.cursos.length != []){
+        let falta = aluno.faltas;
+        let fAtual = aluno.faltas + 1;
+        falta==0?console.log(`\nFalta aplicada para o aluno ${aluno.nome},` +
+         ` tinha ${falta} falta e agora tem ${fAtual} falta.`):console.log(`Falta aplicada para o aluno `+
+         `${aluno.nome}, tinha ${falta} faltas e agora tem ${fAtual} faltas.`);        
+    }else{
+        console.log("Aluno não está matriculado em nenhum curso");        
+    }
 }    
-function aplicarNota(aluno){
-    
+function aplicarNota(aluno, nota){
+    if(aluno.cursos.length != []){
+        aluno.notas.push(nota);
+        console.log(`\nNota adicionada ao aluno ${aluno.nome}, notas: ${aluno.notas}`);
+    }
+    else{
+        console.log("\nAluno não matriculado em nenhum curso");        
+    }
 }  
 function aprovarAluno(aluno){
     
 }
+
