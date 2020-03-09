@@ -107,14 +107,37 @@ function buscarAluno(nomeAluno){
             }
             else{
                 console.log(`${item}: ${fulano[item]}`);
-            }            
+            }
+           return fulano;              
         }
     }else{
         console.log("Estudante não encontrado!");        
+        return null;
     }
 }
 function matricularAluno(aluno, curso){
-    
+    let check = buscarAluno(aluno.nome);
+    if(check != null){
+        aluno.cursos.push({
+            nomeDoCurso: curso,
+            dataMatricula: new Date(),
+        })        
+        aluno.cursos.forEach(obj=>{
+            for(let item in obj){
+                if(item =="nomeDoCurso"){
+                    console.log(`Curso: ${obj[item]}`);    
+                }
+                else{
+                    let data = obj[item];
+                    console.log(`Data da matrícula: ${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`);
+                }
+            }
+        });
+        console.log("Estudante matriculado\n");
+    }
+    else{
+        console.log("Aluno não cadastrado!");        
+    }
 }
 function aplicarFalta(aluno){
     
@@ -125,4 +148,3 @@ function aplicarNota(aluno){
 function aprovarAluno(aluno){
     
 }
-buscarAluno("Lucca");
